@@ -79,6 +79,11 @@ class YoutubePlayerFlags {
   /// Default is true.
   final bool showLiveFullscreenButton;
 
+  /// Enable play on background mode or not.
+  ///
+  /// Default is false.
+  final bool playOnBackground;
+
   /// Creates [YoutubePlayerFlags].
   const YoutubePlayerFlags({
     this.hideControls = false,
@@ -96,6 +101,7 @@ class YoutubePlayerFlags {
     this.endAt,
     this.useHybridComposition = true,
     this.showLiveFullscreenButton = true,
+    this.playOnBackground = false,
   });
 
   /// Copies new values assigned to the [YoutubePlayerFlags].
@@ -116,6 +122,7 @@ class YoutubePlayerFlags {
     bool? controlsVisibleAtStart,
     bool? useHybridComposition,
     bool? showLiveFullscreenButton,
+    bool? playOnBackground,
   }) {
     return YoutubePlayerFlags(
       autoPlay: autoPlay ?? this.autoPlay,
@@ -135,6 +142,7 @@ class YoutubePlayerFlags {
       useHybridComposition: useHybridComposition ?? this.useHybridComposition,
       showLiveFullscreenButton:
           showLiveFullscreenButton ?? this.showLiveFullscreenButton,
+      playOnBackground: playOnBackground ?? this.playOnBackground,
     );
   }
 }

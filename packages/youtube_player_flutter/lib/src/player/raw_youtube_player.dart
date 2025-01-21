@@ -47,6 +47,10 @@ class _RawYoutubePlayerState extends State<RawYoutubePlayer>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (controller?.playOnBackground) {
+      return;
+    }
+
     switch (state) {
       case AppLifecycleState.resumed:
         if (_cachedPlayerState != null &&
