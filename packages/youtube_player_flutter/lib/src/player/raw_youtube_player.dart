@@ -47,7 +47,7 @@ class _RawYoutubePlayerState extends State<RawYoutubePlayer>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (controller?.playOnBackground) {
+    if (controller?.flags.playOnBackground) {
       return;
     }
 
