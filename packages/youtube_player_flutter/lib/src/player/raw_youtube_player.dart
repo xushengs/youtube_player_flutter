@@ -47,10 +47,6 @@ class _RawYoutubePlayerState extends State<RawYoutubePlayer>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (controller?.flags.playOnBackground) {
-      return;
-    }
-
     switch (state) {
       case AppLifecycleState.resumed:
         if (_cachedPlayerState != null &&
@@ -62,7 +58,12 @@ class _RawYoutubePlayerState extends State<RawYoutubePlayer>
         break;
       case AppLifecycleState.paused:
         _cachedPlayerState = controller!.value.playerState;
-        controller?.pause();
+        if (controller?.flags.playOnBackground == false) {
+          controller?.pause();
+        }
+        // if (_cachedPlayerState != null &&
+        //     _cachedPlayerState == PlayerState.playing) {
+        // }
         break;
       default:
     }
@@ -84,6 +85,7 @@ class _RawYoutubePlayerState extends State<RawYoutubePlayer>
         initialSettings: InAppWebViewSettings(
           userAgent: userAgent,
           mediaPlaybackRequiresUserGesture: false,
+          allowBackgroundAudioPlaying: true,
           transparentBackground: true,
           disableContextMenu: true,
           supportZoom: false,
